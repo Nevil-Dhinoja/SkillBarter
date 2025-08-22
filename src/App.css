@@ -1,0 +1,164 @@
+/* Layout helpers */
+/* Light/Dark base backgrounds via Bootstrap body */
+body { background-color: var(--sb-body-bg, #f8f9fb); }
+html { scroll-behavior: smooth; }
+
+.sidebar {
+  min-height: 100vh;
+  position: sticky;
+  top: 0;
+  background-color: var(--sb-sidebar-bg);
+  border-right: 1px solid var(--sb-border-color);
+}
+
+.sidebar-title {
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+/* Sidebar nav styles */
+.nav-link {
+  border-radius: 0.5rem;
+  color: var(--sb-nav-color, #495057);
+  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.nav-link:hover {
+  background-color: var(--sb-nav-hover-bg, #f1f3f5);
+  color: var(--sb-nav-hover-color, #212529);
+  transform: translateY(-1px);
+}
+
+.nav-link.active {
+  background-color: var(--sb-active-bg, #e7f1ff);
+  color: var(--sb-active-color, #0d6efd);
+  box-shadow: 0 0.25rem 0.75rem rgba(13, 110, 253, 0.15);
+  border-left: 4px solid var(--sb-active-border, #0d6efd);
+}
+
+.nav-link i { font-size: 1rem; }
+
+/* Hero */
+.hero-section {
+  background: linear-gradient(180deg, var(--sb-hero-from, #ffffff) 0%, var(--sb-hero-to, #f8f9fb) 100%);
+}
+
+/* Anchor section offset for sticky topbar */
+.scroll-section { scroll-margin-top: 84px; }
+
+/* Cards */
+.skill-card .icon-wrap {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  background-color: var(--sb-icon-bg, #eef1f6);
+  font-size: 1.25rem;
+}
+
+.skill-card:hover { box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.06); }
+
+/* Auth cards */
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  border: none;
+  border-radius: 1rem;
+}
+
+.auth-card .form-control:focus {
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+  border-color: #86b7fe;
+}
+
+/* Topbar */
+.topbar { z-index: 1030; }
+.top-search { border-radius: 999px; background-color: var(--sb-input-bg); border-color: var(--sb-input-border); color: inherit; }
+.top-search::placeholder { color: var(--sb-input-placeholder); opacity: 1; }
+.avatar { width: 2rem; height: 2rem; border-radius: 50%; }
+
+/* Tag pills */
+.tag-pill { display: inline-flex; align-items: center; gap: .25rem; padding-right: .5rem; }
+
+/* Fixed sidebar on md+ screens with corresponding main offset */
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 240px;
+    overflow-y: auto;
+  }
+  .main-content { margin-left: 240px; }
+}
+
+@media (min-width: 992px) {
+  .sidebar { width: 260px; }
+  .main-content { margin-left: 260px; }
+}
+
+/* Theme variables */
+:root[data-bs-theme='light'] {
+  --sb-body-bg: #f8f9fb;
+  --sb-nav-color: #495057;
+  --sb-nav-hover-bg: #f1f3f5;
+  --sb-nav-hover-color: #212529;
+  --sb-active-bg: #e7f1ff;
+  --sb-active-color: #0d6efd;
+  --sb-active-border: #0d6efd;
+  --sb-hero-from: #ffffff;
+  --sb-hero-to: #f8f9fb;
+  --sb-icon-bg: #eef1f6;
+  --sb-sidebar-bg: #ffffff;
+  --sb-border-color: #e9ecef;
+  --sb-input-bg: #f1f3f5;
+  --sb-input-border: #ced4da;
+  --sb-input-placeholder: #6c757d;
+  --sb-chart-grid: #e9ecef;
+  --sb-chart-line: #0d6efd;
+  --sb-chart-fill: #0d6efd;
+}
+
+:root[data-bs-theme='dark'] {
+  --sb-body-bg: #0e1217;             /* Neutral dark */
+  --sb-nav-color: #b9c2cf;           /* Muted slate */
+  --sb-nav-hover-bg: #151b23;        /* Slightly lighter */
+  --sb-nav-hover-color: #e6edf3;     /* Near-white */
+  --sb-active-bg: #0f3a6e1a;         /* Subtle blue tint */
+  --sb-active-color: #7fb3ff;        /* Softer blue */
+  --sb-active-border: #3d8bfd;       /* Primary blue */
+  --sb-hero-from: #0e1217;           /* Gradient start */
+  --sb-hero-to: #0f141a;             /* Gradient end */
+  --sb-icon-bg: #1a2330;             /* Card icon bg */
+  --sb-sidebar-bg: #0f141a;          /* Sidebar surface */
+  --sb-border-color: rgba(255,255,255,0.08);
+  --sb-input-bg: #111823;
+  --sb-input-border: #223043;
+  --sb-input-placeholder: #93a0ae;
+  --sb-chart-grid: #263142;
+  --sb-chart-line: #66a3ff;
+  --sb-chart-fill: #66a3ff;
+}
+
+/* Dark mode card and surface tuning */
+[data-bs-theme='dark'] .card {
+  background-color: #121821;
+  border-color: rgba(255,255,255,0.06);
+}
+
+[data-bs-theme='dark'] .skill-card:hover {
+  box-shadow: 0 0.75rem 1.6rem rgba(0,0,0,0.45);
+}
+
+[data-bs-theme='dark'] .hero-section {
+  border-color: rgba(255,255,255,0.06) !important;
+}
+
+[data-bs-theme='dark'] .btn-primary {
+  box-shadow: 0 0.5rem 1rem rgba(61, 139, 253, 0.25);
+}
+
+
