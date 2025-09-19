@@ -163,7 +163,22 @@ html { scroll-behavior: smooth; }
 
 /* Landing Page Styles */
 .bg-gradient-primary {
-  background: #2563eb;
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.bg-gradient-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="shapeGrad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23ffffff;stop-opacity:0.4"/><stop offset="100%" style="stop-color:%23ffffff;stop-opacity:0.2"/></linearGradient><linearGradient id="shapeGrad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%2360a5fa;stop-opacity:0.6"/><stop offset="100%" style="stop-color:%233b82f6;stop-opacity:0.4"/></linearGradient></defs><circle cx="200" cy="150" r="80" fill="url(%23shapeGrad1)" opacity="0.8"><animateTransform attributeName="transform" type="translate" values="0,0; 20,-10; 0,0" dur="8s" repeatCount="indefinite"/></circle><circle cx="1000" cy="200" r="120" fill="url(%23shapeGrad1)" opacity="0.6"><animateTransform attributeName="transform" type="translate" values="0,0; -15,20; 0,0" dur="10s" repeatCount="indefinite"/></circle><polygon points="300,400 450,300 600,400 450,500" fill="url(%23shapeGrad2)" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="0 450 400; 360 450 400" dur="15s" repeatCount="indefinite"/></polygon><polygon points="800,600 950,500 1100,600 950,700" fill="url(%23shapeGrad1)" opacity="0.5"><animateTransform attributeName="transform" type="rotate" values="360 950 600; 0 950 600" dur="20s" repeatCount="indefinite"/></polygon><ellipse cx="150" cy="600" rx="100" ry="60" fill="url(%23shapeGrad2)" opacity="0.6"><animateTransform attributeName="transform" type="translate" values="0,0; 30,-20; 0,0" dur="12s" repeatCount="indefinite"/></ellipse><rect x="700" y="100" width="200" height="100" rx="20" fill="url(%23shapeGrad1)" opacity="0.4" transform="rotate(45 800 150)"><animateTransform attributeName="transform" type="rotate" values="45 800 150; 405 800 150" dur="18s" repeatCount="indefinite"/></rect></svg>');
+  background-size: cover;
+  background-position: center;
+  animation: float 20s ease-in-out infinite;
 }
 
 .min-vh-75 {
@@ -171,45 +186,135 @@ html { scroll-behavior: smooth; }
 }
 
 .hero-image {
-  animation: float 6s ease-in-out infinite;
+  animation: float 6s ease-in-out infinite, pulse 4s ease-in-out infinite, glow 3s ease-in-out infinite;
+  position: relative;
+}
+
+.hero-image::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+  border-radius: 20px;
+  animation: pulse-glow 2s ease-in-out infinite;
+  z-index: -1;
 }
 
 .hero-image .lottie-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  z-index: 1;
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(2deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(37, 99, 235, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(37, 99, 235, 0.6); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
 }
 
 .navbar-brand {
   font-size: 1.5rem !important;
   color: #2563eb;
   font-weight: 800;
+  transition: all 0.3s ease;
+  position: relative;
+  text-decoration: none;
 }
 
-/* Enhanced Button Styles */
-.btn-primary {
-  background: #2563eb;
-  border: none;
-  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+.navbar-brand:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+  color: #1d4ed8;
+}
+
+.navbar-brand .brand-text {
+  background: linear-gradient(45deg, #2563eb, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  color: #374151 !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: 8px;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(45deg, #2563eb, #3b82f6);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+  width: 80%;
+}
+
+.nav-link:hover {
+  color: #2563eb !important;
+  transform: translateY(-2px);
+  background-color: rgba(37, 99, 235, 0.05);
+}
+
+.nav-link i {
   transition: all 0.3s ease;
 }
 
-.btn-primary:hover {
-  background: #1d4ed8;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+.nav-link:hover i {
+  transform: scale(1.1);
 }
 
+/* Enhanced Navbar */
+.navbar {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-bottom: 1px solid rgba(37, 99, 235, 0.1);
+}
+
+.navbar-toggler {
+  border: none !important;
+  padding: 0.25rem 0.5rem;
+}
+
+.navbar-toggler:focus {
+  box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+}
+
+/* Button Enhancements */
 .btn-outline-primary {
   border: 2px solid #2563eb;
   color: #2563eb;
   background: transparent;
   transition: all 0.3s ease;
+  border-radius: 8px;
 }
 
 .btn-outline-primary:hover {
@@ -219,23 +324,81 @@ html { scroll-behavior: smooth; }
   box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
 }
 
+.btn-primary {
+  background: linear-gradient(45deg, #2563eb, #3b82f6);
+  border: none;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, #1d4ed8, #2563eb);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+}
+
+/* Features Section Background */
+.features-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.features-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="featGrad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%232563eb;stop-opacity:0.15"/><stop offset="100%" style="stop-color:%233b82f6;stop-opacity:0.08"/></linearGradient><linearGradient id="featGrad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%2360a5fa;stop-opacity:0.2"/><stop offset="100%" style="stop-color:%232563eb;stop-opacity:0.1"/></linearGradient></defs><circle cx="150" cy="200" r="50" fill="url(%23featGrad1)" opacity="0.8"><animateTransform attributeName="transform" type="translate" values="0,0; 15,-10; 0,0" dur="10s" repeatCount="indefinite"/></circle><circle cx="1050" cy="300" r="70" fill="url(%23featGrad2)" opacity="0.6"><animateTransform attributeName="transform" type="translate" values="0,0; -20,15; 0,0" dur="12s" repeatCount="indefinite"/></circle><polygon points="300,500 400,400 500,500 400,600" fill="url(%23featGrad1)" opacity="0.7"><animateTransform attributeName="transform" type="rotate" values="0 400 500; 360 400 500" dur="20s" repeatCount="indefinite"/></polygon><polygon points="800,200 900,100 1000,200 900,300" fill="url(%23featGrad2)" opacity="0.5"><animateTransform attributeName="transform" type="rotate" values="360 900 200; 0 900 200" dur="25s" repeatCount="indefinite"/></polygon><ellipse cx="100" cy="600" rx="60" ry="30" fill="url(%23featGrad1)" opacity="0.6"><animateTransform attributeName="transform" type="translate" values="0,0; 25,-15; 0,0" dur="8s" repeatCount="indefinite"/></ellipse></svg>');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
 /* Feature Cards */
 .feature-card {
   background: linear-gradient(145deg, #ffffff, #f8f9fa);
   border: none;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.feature-card:hover::before {
+  left: 100%;
 }
 
 .feature-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+}
+
+.feature-card .fs-1 {
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover .fs-1 {
+  transform: scale(1.2) rotate(5deg);
 }
 
 /* CTA Section */
 .cta-section {
-  background: #1e40af;
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
   position: relative;
   overflow: hidden;
 }
@@ -247,19 +410,44 @@ html { scroll-behavior: smooth; }
   left: 0;
   right: 0;
   bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/><circle cx="10" cy="60" r="0.5" fill="white" opacity="0.1"/><circle cx="90" cy="40" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-  opacity: 0.3;
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><linearGradient id="ctaGrad1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23ffffff;stop-opacity:0.5"/><stop offset="100%" style="stop-color:%23ffffff;stop-opacity:0.2"/></linearGradient><linearGradient id="ctaGrad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%2360a5fa;stop-opacity:0.7"/><stop offset="100%" style="stop-color:%233b82f6;stop-opacity:0.4"/></linearGradient></defs><circle cx="100" cy="100" r="60" fill="url(%23ctaGrad1)" opacity="0.9"><animateTransform attributeName="transform" type="translate" values="0,0; 25,-15; 0,0" dur="6s" repeatCount="indefinite"/></circle><circle cx="1100" cy="150" r="80" fill="url(%23ctaGrad1)" opacity="0.7"><animateTransform attributeName="transform" type="translate" values="0,0; -20,25; 0,0" dur="8s" repeatCount="indefinite"/></circle><polygon points="200,300 350,200 500,300 350,400" fill="url(%23ctaGrad2)" opacity="0.8"><animateTransform attributeName="transform" type="rotate" values="0 350 300; 360 350 300" dur="12s" repeatCount="indefinite"/></polygon><polygon points="700,400 850,300 1000,400 850,500" fill="url(%23ctaGrad1)" opacity="0.6"><animateTransform attributeName="transform" type="rotate" values="360 850 400; 0 850 400" dur="16s" repeatCount="indefinite"/></polygon><ellipse cx="50" cy="500" rx="80" ry="40" fill="url(%23ctaGrad2)" opacity="0.7"><animateTransform attributeName="transform" type="translate" values="0,0; 40,-25; 0,0" dur="10s" repeatCount="indefinite"/></ellipse><rect x="600" y="50" width="150" height="80" rx="15" fill="url(%23ctaGrad1)" opacity="0.5" transform="rotate(30 675 90)"><animateTransform attributeName="transform" type="rotate" values="30 675 90; 390 675 90" dur="14s" repeatCount="indefinite"/></rect></svg>');
+  background-size: cover;
+  background-position: center;
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
 }
 
 /* Hero Animation Enhancement */
 .hero-image {
-  animation: float 6s ease-in-out infinite, pulse 4s ease-in-out infinite;
+  animation: float 6s ease-in-out infinite, pulse 4s ease-in-out infinite, glow 3s ease-in-out infinite;
 }
 
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.05); }
 }
+
+/* Section Animations */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up:nth-child(1) { animation-delay: 0.1s; }
+.fade-in-up:nth-child(2) { animation-delay: 0.2s; }
+.fade-in-up:nth-child(3) { animation-delay: 0.3s; }
 
 @media (max-width: 768px) {
   .display-4 {
