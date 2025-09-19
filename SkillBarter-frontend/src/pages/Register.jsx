@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useAuth } from '../context/AuthContext';
 
-function Register({ onSwitchToLogin, onSuccess }) {
+function Register({ onSwitchToLogin, onSwitchToLanding, onSuccess }) {
   const { login } = useAuth()
   const [currentStep, setCurrentStep] = useState(1); // 1: Register, 2: OTP Verification
   const [formData, setFormData] = useState({
@@ -379,12 +379,19 @@ function Register({ onSwitchToLogin, onSuccess }) {
 
           {/* Login Link */}
           {currentStep === 1 && (
-            <div className="text-center small">
-              Already have an account?{' '}
-              <button className="btn btn-link p-0 align-baseline" onClick={onSwitchToLogin}>
-                Login
-              </button>
-            </div>
+            <>
+              <div className="text-center small mb-2">
+                <button className="btn btn-link p-0 align-baseline" onClick={onSwitchToLanding}>
+                  ← Back to Home
+                </button>
+              </div>
+              <div className="text-center small">
+                Already have an account?{' '}
+                <button className="btn btn-link p-0 align-baseline" onClick={onSwitchToLogin}>
+                  Login
+                </button>
+              </div>
+            </>
           )}
         </div>
       </div>

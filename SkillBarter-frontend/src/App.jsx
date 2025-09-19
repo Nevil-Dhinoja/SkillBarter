@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import { default as LandingPage } from './pages/LandingPage.jsx'
 import { default as Login } from './pages/Login.jsx'
 import { default as Register } from './pages/Register.jsx'
 import { default as Dashboard } from './pages/Dashboard.jsx'
@@ -11,7 +12,7 @@ import { SocketProvider } from './context/SocketContext.jsx'
 // App content component that uses auth context
 function AppContent() {
   const { user, loading, isAuthenticated } = useAuth()
-  const [view, setView] = useState('login')
+  const [view, setView] = useState('landing')
   const [activeKey, setActiveKey] = useState('dashboard')
   const [theme, setTheme] = useState(() => {
     const stored = typeof window !== 'undefined' ? localStorage.getItem('sb-theme') : null
@@ -36,7 +37,7 @@ function AppContent() {
           setView('dashboard')
         }
       } else {
-        setView('login')
+        setView('landing')
       }
     }
   }, [user, loading, isAuthenticated])
@@ -79,10 +80,20 @@ function AppContent() {
     )
   }
 
+  if (view === 'landing') {
+    return (
+      <LandingPage
+        onSwitchToLogin={() => setView('login')}
+        onSwitchToRegister={() => setView('register')}
+      />
+    )
+  }
+
   if (view === 'login') {
     return (
       <Login
         onSwitchToRegister={() => setView('register')}
+        onSwitchToLanding={() => setView('landing')}
         onSuccess={() => setView('dashboard')}
       />
     )
@@ -92,6 +103,7 @@ function AppContent() {
     return (
       <Register
         onSwitchToLogin={() => setView('login')}
+        onSwitchToLanding={() => setView('landing')}
         onSuccess={() => setView('dashboard')}
       />
     )

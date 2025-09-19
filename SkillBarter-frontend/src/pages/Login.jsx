@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 
-function Login({ onSwitchToRegister, onSuccess }) {
+function Login({ onSwitchToRegister, onSwitchToLanding, onSuccess }) {
   const { login } = useAuth()
   const [formData, setFormData] = useState({
     email: '',
@@ -236,6 +236,11 @@ function Login({ onSwitchToRegister, onSuccess }) {
                 </button>
               </div>
               
+              <div className="text-center small mb-2">
+                <button className="btn btn-link p-0 align-baseline" onClick={onSwitchToLanding}>
+                  ← Back to Home
+                </button>
+              </div>
               <div className="text-center small">
                 Don't have an account?{' '}
                 <button className="btn btn-link p-0 align-baseline" onClick={onSwitchToRegister}>Register</button>

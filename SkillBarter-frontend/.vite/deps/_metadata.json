@@ -1,55 +1,67 @@
 {
-  "hash": "c7dbe3d9",
-  "configHash": "36e3b4c6",
-  "lockfileHash": "b7385d00",
-  "browserHash": "bc08ac8e",
+  "hash": "ea83c715",
+  "configHash": "42c8effe",
+  "lockfileHash": "3eddda2e",
+  "browserHash": "64bc1481",
   "optimized": {
     "react": {
       "src": "../../node_modules/react/index.js",
       "file": "react.js",
-      "fileHash": "65db7c73",
+      "fileHash": "84e4796a",
       "needsInterop": true
     },
     "react-dom": {
       "src": "../../node_modules/react-dom/index.js",
       "file": "react-dom.js",
-      "fileHash": "c104bac8",
+      "fileHash": "f83f1b25",
       "needsInterop": true
     },
     "react/jsx-dev-runtime": {
       "src": "../../node_modules/react/jsx-dev-runtime.js",
       "file": "react_jsx-dev-runtime.js",
-      "fileHash": "01b98d01",
+      "fileHash": "6bb8a675",
       "needsInterop": true
     },
     "react/jsx-runtime": {
       "src": "../../node_modules/react/jsx-runtime.js",
       "file": "react_jsx-runtime.js",
-      "fileHash": "317be0f1",
+      "fileHash": "c86d1cd5",
       "needsInterop": true
     },
     "react-dom/client": {
       "src": "../../node_modules/react-dom/client.js",
       "file": "react-dom_client.js",
-      "fileHash": "5e2bcd95",
+      "fileHash": "7ed4f589",
       "needsInterop": true
     },
     "socket.io-client": {
       "src": "../../node_modules/socket.io-client/build/esm/index.js",
       "file": "socket__io-client.js",
-      "fileHash": "0cac8dfe",
+      "fileHash": "f3ecfbd8",
+      "needsInterop": false
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.mjs",
+      "file": "react-router-dom.js",
+      "fileHash": "39690108",
+      "needsInterop": false
+    },
+    "lottie-react": {
+      "src": "../../node_modules/lottie-react/build/index.es.js",
+      "file": "lottie-react.js",
+      "fileHash": "d7826f42",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-TQZLRHS6": {
-      "file": "chunk-TQZLRHS6.js"
+    "chunk-PFG2UKEP": {
+      "file": "chunk-PFG2UKEP.js"
     },
-    "chunk-NBZ6TB3Y": {
-      "file": "chunk-NBZ6TB3Y.js"
+    "chunk-32EALFBN": {
+      "file": "chunk-32EALFBN.js"
     },
-    "chunk-HKJ2B2AA": {
-      "file": "chunk-HKJ2B2AA.js"
+    "chunk-G3PMV62Z": {
+      "file": "chunk-G3PMV62Z.js"
     }
   }
 }
