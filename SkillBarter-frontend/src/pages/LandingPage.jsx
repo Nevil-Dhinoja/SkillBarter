@@ -29,9 +29,6 @@ function LandingPage({ onSwitchToLogin, onSwitchToRegister }) {
               <li className="nav-item">
                 <a className="nav-link" href="#how-it-works">How It Works</a>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#about">About</a>
-              </li>
             </ul>
             
             <div className="d-flex gap-2">
