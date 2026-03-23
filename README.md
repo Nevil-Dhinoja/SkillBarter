@@ -1,6 +1,6 @@
 <div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=2,12,20&height=200&section=header&text=SkillBarter&fontSize=52&fontColor=fff&fontAlignY=42&desc=A%20platform%20to%20exchange%20skills%20%E2%80%94%20teach%20what%20you%20know%2C%20learn%20what%20you%20don%27t&descAlignY=65&descSize=14&descColor=fff&animation=twinkling" width="100%"/>
+        
+<img src="https://capsule-render.vercel.app/api?type=venom&color=gradient&customColorList=2,12,20&height=200&section=header&text=SkillBarter&fontSize=52&fontColor=fff&fontAlignY=42&desc=Collaborative%20Project%20Management%20Platform%20for%20Developers&descAlignY=62&descSize=15&descColor=fff&animation=twinkling" width="100%"/>
 
 <br/>
 
